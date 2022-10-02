@@ -1,0 +1,16 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://${FAAS_GATEWAY:-api.codref.org}
+functions:
+  terminal:
+    lang: python3.10-microservice
+    handler: ./terminal
+    image: ghcr.io/codref/terminal-faas:${DEPLOY_ENV_NAME:-latest}
+    environment:
+      DEPLOY_ENV_NAME: ${DEPLOY_ENV_NAME:-development}
+      APP_NAME: terminal
+      ENV_NAME: ${ENV_NAME:-api.codref.org}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    secrets:
+      - gitlab-com
