@@ -12,5 +12,6 @@ functions:
       APP_NAME: terminal
       ENV_NAME: ${ENV_NAME:-api.codref.org}
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      REDIS_HOST: ${REDIS_HOST:-redis-master.openfaas-fn.svc.cluster.local}
     secrets:
       - gitlab-com

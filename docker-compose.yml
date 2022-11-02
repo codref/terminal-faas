@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  redis:
+    image: redis
+
+  terminal:
+    image: ${IMAGE}:latest
+    # image: ghcr.io/codref/terminal-faas:latest
+    command: sh -c 'fwatchdog'
+    ports:
+      - "8081:8080"
+    volumes:
+      - ${FUNCTION_PATH}:/home/app/function/
+      # - /home/operatore/git-codref/api-codref-org/terminal-faas/terminal:/home/app/function/
